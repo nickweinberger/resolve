@@ -1,0 +1,12 @@
+{
+  "name": "resolve",
+  "displayName": "resolve",
+  "expo": {
+    "name": "resolve",
+    "slug": "resolve",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
