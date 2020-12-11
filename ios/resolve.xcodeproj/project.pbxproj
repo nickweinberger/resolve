@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		96905EF65AED1B983A6B3ABC /* libPods-resolve.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EEBF8E8E6FB1BC6CAF49B5 /* libPods-resolve.a */; };
+		A63A8C8E2575C97C0061B58D /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63A8C8D2575C97C0061B58D /* File.swift */; };
+		A6864F26257168D000A346A1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		A6864F27257168D400A346A1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
+		D4C29DA8D4524CA02C1FFCCA /* libPods-resolve.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E652F44C6B2DF012CECDC30 /* libPods-resolve.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,11 +26,15 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = resolve/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = resolve/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = resolve/main.m; sourceTree = "<group>"; };
-		58EEBF8E8E6FB1BC6CAF49B5 /* libPods-resolve.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-resolve.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6C2E3173556A471DD304B334 /* Pods-resolve.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-resolve.debug.xcconfig"; path = "Target Support Files/Pods-resolve/Pods-resolve.debug.xcconfig"; sourceTree = "<group>"; };
-		7A4D352CD337FB3A3BF06240 /* Pods-resolve.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-resolve.release.xcconfig"; path = "Target Support Files/Pods-resolve/Pods-resolve.release.xcconfig"; sourceTree = "<group>"; };
+		380F95263601D44119AB24B8 /* Pods-resolve.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-resolve.release.xcconfig"; path = "Target Support Files/Pods-resolve/Pods-resolve.release.xcconfig"; sourceTree = "<group>"; };
+		4E652F44C6B2DF012CECDC30 /* libPods-resolve.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-resolve.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A63A8C8A2575C7420061B58D /* resolve-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "resolve-Bridging-Header.h"; sourceTree = "<group>"; };
+		A63A8C8D2575C97C0061B58D /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		A6864F2E25716B1F00A346A1 /* resolveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resolveUITests.swift; sourceTree = "<group>"; };
+		A6864F3025716B1F00A346A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = resolve/SplashScreen.storyboard; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
+		CE019BC62F920BFE0F37AA30 /* Pods-resolve.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-resolve.debug.xcconfig"; path = "Target Support Files/Pods-resolve/Pods-resolve.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
@@ -39,7 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96905EF65AED1B983A6B3ABC /* libPods-resolve.a in Frameworks */,
+				D4C29DA8D4524CA02C1FFCCA /* libPods-resolve.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,12 +57,14 @@
 				BB2F792B24A3F905000567C9 /* Supporting */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
+				A63A8C8D2575C97C0061B58D /* File.swift */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
+				A63A8C8A2575C7420061B58D /* resolve-Bridging-Header.h */,
 			);
 			name = resolve;
 			sourceTree = "<group>";
@@ -67,7 +74,7 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				58EEBF8E8E6FB1BC6CAF49B5 /* libPods-resolve.a */,
+				4E652F44C6B2DF012CECDC30 /* libPods-resolve.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -84,6 +91,7 @@
 			children = (
 				13B07FAE1A68108700A75B9A /* resolve */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
+				A6864F2D25716B1F00A346A1 /* resolveUITests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				D65327D7A22EEC0BE12398D9 /* Pods */,
@@ -101,6 +109,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		A6864F2D25716B1F00A346A1 /* resolveUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A6864F2E25716B1F00A346A1 /* resolveUITests.swift */,
+				A6864F3025716B1F00A346A1 /* Info.plist */,
+			);
+			path = resolveUITests;
+			sourceTree = "<group>";
+		};
 		BB2F792B24A3F905000567C9 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,8 +130,8 @@
 		D65327D7A22EEC0BE12398D9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6C2E3173556A471DD304B334 /* Pods-resolve.debug.xcconfig */,
-				7A4D352CD337FB3A3BF06240 /* Pods-resolve.release.xcconfig */,
+				CE019BC62F920BFE0F37AA30 /* Pods-resolve.debug.xcconfig */,
+				380F95263601D44119AB24B8 /* Pods-resolve.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -126,13 +143,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "resolve" */;
 			buildPhases = (
-				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
+				1690FE3D530E9A1A62F81773 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
+				2D84D5737EEA0B5EFCD6E774 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,10 +166,12 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1130;
+				LastSwiftUpdateCheck = 1170;
+				LastUpgradeCheck = 1170;
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						DevelopmentTeam = QZF5AWK7HF;
+						LastSwiftMigration = 1170;
 					};
 				};
 			};
@@ -203,7 +222,7 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n../node_modules/expo-updates/scripts/create-manifest-ios.sh\n";
 		};
-		08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */ = {
+		1690FE3D530E9A1A62F81773 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -225,7 +244,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
+		2D84D5737EEA0B5EFCD6E774 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -269,8 +288,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
-				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				A6864F27257168D400A346A1 /* AppDelegate.m in Sources */,
+				A63A8C8E2575C97C0061B58D /* File.swift in Sources */,
+				A6864F26257168D000A346A1 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,11 +311,12 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6C2E3173556A471DD304B334 /* Pods-resolve.debug.xcconfig */;
+			baseConfigurationReference = CE019BC62F920BFE0F37AA30 /* Pods-resolve.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QZF5AWK7HF;
 				ENABLE_BITCODE = NO;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -305,6 +326,60 @@
 				INFOPLIST_FILE = resolve/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_CONFIGURATION_BUILD_DIR}/DoubleConversion",
+					"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants",
+					"${PODS_CONFIGURATION_BUILD_DIR}/EXErrorRecovery",
+					"${PODS_CONFIGURATION_BUILD_DIR}/EXFileSystem",
+					"${PODS_CONFIGURATION_BUILD_DIR}/EXFont",
+					"${PODS_CONFIGURATION_BUILD_DIR}/EXImageLoader",
+					"${PODS_CONFIGURATION_BUILD_DIR}/EXKeepAwake",
+					"${PODS_CONFIGURATION_BUILD_DIR}/EXLinearGradient",
+					"${PODS_CONFIGURATION_BUILD_DIR}/EXLocation",
+					"${PODS_CONFIGURATION_BUILD_DIR}/EXPermissions",
+					"${PODS_CONFIGURATION_BUILD_DIR}/EXSQLite",
+					"${PODS_CONFIGURATION_BUILD_DIR}/EXSplashScreen",
+					"${PODS_CONFIGURATION_BUILD_DIR}/EXUpdates",
+					"${PODS_CONFIGURATION_BUILD_DIR}/FBReactNativeSpec",
+					"${PODS_CONFIGURATION_BUILD_DIR}/Flipper",
+					"${PODS_CONFIGURATION_BUILD_DIR}/Flipper-DoubleConversion",
+					"${PODS_CONFIGURATION_BUILD_DIR}/Flipper-Folly",
+					"${PODS_CONFIGURATION_BUILD_DIR}/Flipper-Glog",
+					"${PODS_CONFIGURATION_BUILD_DIR}/Flipper-PeerTalk",
+					"${PODS_CONFIGURATION_BUILD_DIR}/Flipper-RSocket",
+					"${PODS_CONFIGURATION_BUILD_DIR}/FlipperKit",
+					"${PODS_CONFIGURATION_BUILD_DIR}/Folly",
+					"${PODS_CONFIGURATION_BUILD_DIR}/RCTTypeSafety",
+					"${PODS_CONFIGURATION_BUILD_DIR}/RNGestureHandler",
+					"${PODS_CONFIGURATION_BUILD_DIR}/RNReanimated",
+					"${PODS_CONFIGURATION_BUILD_DIR}/RNScreens",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-Core",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-CoreModules",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTAnimation",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTBlob",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTImage",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTLinking",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTNetwork",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTSettings",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTText",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTVibration",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-cxxreact",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-jsi",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-jsiexecutor",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-jsinspector",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon",
+					"${PODS_CONFIGURATION_BUILD_DIR}/UMAppLoader",
+					"${PODS_CONFIGURATION_BUILD_DIR}/UMCore",
+					"${PODS_CONFIGURATION_BUILD_DIR}/UMPermissionsInterface",
+					"${PODS_CONFIGURATION_BUILD_DIR}/UMReactNativeAdapter",
+					"${PODS_CONFIGURATION_BUILD_DIR}/Yoga",
+					"${PODS_CONFIGURATION_BUILD_DIR}/YogaKit",
+					"${PODS_CONFIGURATION_BUILD_DIR}/glog",
+					"${PODS_ROOT}/CocoaLibEvent/lib",
+					"${PODS_ROOT}/OpenSSL-Universal/ios/lib",
+					"${PODS_CONFIGURATION_BUILD_DIR}/CocoaAsyncSocket",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -312,6 +387,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.name.resolve;
 				PRODUCT_NAME = resolve;
+				SWIFT_OBJC_BRIDGING_HEADER = "resolve-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -320,11 +396,12 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7A4D352CD337FB3A3BF06240 /* Pods-resolve.release.xcconfig */;
+			baseConfigurationReference = 380F95263601D44119AB24B8 /* Pods-resolve.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QZF5AWK7HF;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = resolve/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -336,6 +413,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.name.resolve;
 				PRODUCT_NAME = resolve;
+				SWIFT_OBJC_BRIDGING_HEADER = "resolve-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -391,9 +469,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
 				LIBRARY_SEARCH_PATHS = (
+					"\"$(inherited)\"",
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
-					"\"$(inherited)\"",
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -444,12 +522,13 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
 				LIBRARY_SEARCH_PATHS = (
+					"\"$(inherited)\"",
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
-					"\"$(inherited)\"",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
