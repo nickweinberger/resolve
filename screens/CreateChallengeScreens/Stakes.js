@@ -1,9 +1,11 @@
 import * as React from "react";
+import { useState } from "react";
 import { View, StyleSheet, Text, ScrollView, KeyboardAvoidingView } from "react-native";
 import { TextInput, Button, Card } from "react-native-paper";
 
 import { Formik } from "formik";
 import { useFormState, useFormDispatch } from "../../components/CreateChallengeFormContext";
+
 
 export default ({ navigation }) => {
   const form = React.useRef();
@@ -47,6 +49,7 @@ export default ({ navigation }) => {
                 mode='outlined'
                 maxLength = {3}
                 autoCapitalize="none"
+                disabled={values.customPenalty}
                 keyboardType='numeric'
                 theme={{
                    colors: {
@@ -60,10 +63,11 @@ export default ({ navigation }) => {
                 style={styles.financialInput}
               />
             </View>
-            <Text style={styles.andor}>and / or</Text>
+            <Text style={styles.andor}>Or</Text>
             <TextInput
               mode='outlined'
               autoCapitalize="words"
+              disabled={values.financialPenalty}
               maxLength = {30}
               theme={{
                  colors: {

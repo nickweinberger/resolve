@@ -28,21 +28,22 @@ const axios = require('axios').default;
 // Create Account Request Function
 async function createChallenge(values) {
 
+  console.log(values)
 
-  if (values) {
-    console.log(JSON.stringify(values))
-    axios.post('https://t31amiwnaf.execute-api.us-east-1.amazonaws.com/dev/create-challenge',
-    JSON.stringify(values))
-    .then((response) => {
-      console.log(response);
+  // if (values) {
+  //   console.log(JSON.stringify(values))
+  //   axios.post('https://t31amiwnaf.execute-api.us-east-1.amazonaws.com/dev/create-challenge',
+  //   JSON.stringify(values))
+  //   .then((response) => {
+  //     console.log(response);
 
-    }, (error) => {
-      console.log("This is the error: " + error);
-    });
-    console.log('correct input')
-  } else {
-    console.log('registration error')
-  }
+  //   }, (error) => {
+  //     console.log("This is the error: " + error);
+  //   });
+  //   console.log('correct input')
+  // } else {
+  //   console.log('registration error')
+  // }
 }
 
 export default ({ navigation }) => {
@@ -78,7 +79,7 @@ export default ({ navigation }) => {
     setShow(Platform.OS === 'ios');
     setDate(currentDate);
     // console.log(currentDate)
-  };
+  }; 
 
   return (
     <Formik
@@ -109,11 +110,6 @@ export default ({ navigation }) => {
                 onChange={onChange}
               />
           )}
-          <Text style={styles.text}>You have selected:
-            <Text style={{fontSize: 20}}> {date.toString().substring(0, 3)}</Text>
-            <Text style={{fontSize: 20}}>. {date.toString().substring(3, 7)}</Text>
-            <Text style={{fontSize: 20}}>.  {date.toString().substring(8, 10)}</Text>
-          </Text>
           <Button
             mode="contained"
             style={{ marginTop: '10%', backgroundColor: '#e80000'}}
@@ -188,7 +184,8 @@ export default ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center"
+    alignItems: "center",
+    marginTop: 10
   },
   topRow: {
     flexDirection: 'row',
@@ -232,7 +229,8 @@ const styles = StyleSheet.create({
   },
   showDatePicker: {
     marginTop: 1,
-    width: '100%',
+    width: '30%',
+    marginTop: 20,
     marginBottom: '5%'
   },
 
