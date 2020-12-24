@@ -11,7 +11,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { Entypo } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 
-import MyChallengesSwiper from './MyChallengesSwiper'
+import MyChallengesSwiper from '../components/MyChallengesSwiper'
 import MyChallengesStack from './MyChallengesStack'
 import MyProfileStack from './MyProfileStack'
 import CreateChallengeTab2 from './CreateChallengeTab2'

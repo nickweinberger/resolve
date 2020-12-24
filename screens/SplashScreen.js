@@ -1,209 +1,241 @@
 import 'react-native-gesture-handler';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import React from 'react';
-import { StyleSheet, Text, ScrollView, View, Image, TouchableOpacity, KeyboardAvoidingView } from 'react-native';
-import { TextInput, Card, Button} from "react-native-paper";
+import React, { Component } from 'react';
+import { StyleSheet, Text, ScrollView, View, Button, Image, TouchableOpacity} from 'react-native';
+import { TextInput, Card } from "react-native-paper";
 
-// Form imports
-import { Formik } from "formik";
-import * as Yup from 'yup'
-
-// Import Async Storage for saving account data locally
+// Import Async Storage for Persistent Login
 import AsyncStorage from '@react-native-community/async-storage';
 
-import { useFormState, useFormDispatch } from "../components/CreateAccountFormContext";
-
-
-// Create Account Form Validation
-const validationSchema = Yup.object().shape({
-  phone: Yup.string()
-    .label('phoneNumber')
-    .required('Please enter a 10 digit phone number')
-    .min(10, 'Phone number must have at least 10 digits'),
-  password: Yup.string()
-    .label('Password')
-    .required('Please enter a password')
-    .matches(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/, "Password must contain 8 Characters, One Letter, One Number"),
-  confirmPassword: Yup.string()
-    .label('Password')
-    .required('Please confirm your password')
-    .oneOf([Yup.ref("password"), null], "Passwords must match")
-})
+import { CommonActions } from '@react-navigation/native';
 
 // Require Axios
 const axios = require('axios').default;
 
+// Main
+export default class PersistentLogin extends Component {
 
-// Function to store userID in AsyncStorage
-const storeUserID = async (values) => {
-  try {
+  constructor(props) {
+    super(props);
+    this.state = {
+        phone: "",
+        password: "",
+        userID: "",
+        loggedIn: false,
+        error: "",
+      };
+    }
 
-    // save userID in async storage (userid = user-"phonenumber")
-    await AsyncStorage.setItem("userID", `user-${values.phone}`);
+  handlePhone = text => {
+    this.setState({ phone: text });
+  };
+  handlePassword = text => {
+    this.setState({ password: text });
+  };
 
-  } catch (error) {
-    console.log("Something went wrong", error);
-  }
-}
+  render() {
 
+    // Import navigation inside render
+    const { navigation } = this.props;
 
-// Create Account Request Function
-async function createAccount(values, {navigation}) {
-
-  // if phone number is 10 digits
-  if (values.phone.length === 10 && values.password.length > 0) {
-
-    // axios post
-    axios.post('https://t31amiwnaf.execute-api.us-east-1.amazonaws.com/dev/create-account',
-    {"name":values.name, "phone":values.phone, "password":values.password})
-    .then((response) => {
-      console.log(response);
-      // if successful
-      if (response.data.account_created === true) {
-
-        // Store user ID in async storage
-        storeUserID(values)
-
-        // navigate to onboarding
-        navigation.navigate('FirstOnboarding')
+    // Function to store login data in AsyncStorage
+    const storeToken = async () => {
+      try {
+         await AsyncStorage.setItem("userData", JSON.stringify({"phone": this.state.phone, "password": this.state.password }));
+      } catch (error) {
+        console.log("Something went wrong", error);
       }
-    }, (error) => {
-      console.log("This is the error: " + error);
-    });
-    console.log('correct input')
-  } else {
-    console.log('registration error')
-  }
-}
+    }
 
-export default ({ navigation }) => {
-  const form = React.useRef();
-  const dispatch = useFormDispatch();
-  const { values: formValues, errors: formErrors } = useFormState("user");
+    // Function to store userID in AsyncStorage
+    const storeUserID = async () => {
+      try {
+        console.log('stored UserID successfully')
+        // console.log(this.state.userID)
+        await AsyncStorage.setItem("userID", this.state.userID);
 
-  React.useEffect(() => {
-    const unsubscribe = navigation.addListener("blur", () => {
-      if (form.current) {
-        const { values, errors } = form.current;
-        dispatch({
-          type: "UPDATE_FORM",
-          payload: {
-            id: "user",
-            data: { values, errors }
+      } catch (error) {
+        console.log("Something went wrong", error);
+      }
+    }
+
+    // Login Function
+    const login = async () => {
+      if (this.state.phone.length === 10 && this.state.password.length > 0) {
+
+        // Axios Request
+        axios.post('https://t31amiwnaf.execute-api.us-east-1.amazonaws.com/dev/login', (JSON.stringify({"phone": this.state.phone, "password": this.state.password })))
+        .then((response) => {
+          console.log(response)
+          if (response.data.message === "Sucessfully logged in") {
+
+            // Call storeToken
+            storeToken()
+
+            // Set Logged In State to True
+            this.setState({
+              loggedIn: true
+            });
+
+            // Set state of User ID
+            this.setState({
+              userID: response.data.uid
+            })
+
+            // Store User ID
+            storeUserID()
+
+
+            // // Call conditional show error function
+            // showError(response)
+
+            // Navigate to Home Page Tab
+            navigation.navigate('HomeTab')
+
+          } else {
+
+            // Set State of error to match Backend error message
+            this.setState({
+              error: response.data.message
+            })
+
           }
+        }, (error) => {
+          console.log("This is the error: " + error);
         });
+        console.log('correct input')
+      } else if (this.state.phone.length !== 10) {
+        this.setState({
+          error: '10 digit phone numbers please!'
+        })
+      } else if (this.state.password.length < 1) {
+        this.setState({
+          error: 'Please enter your password!'
+        })
       }
-    });
+    }
 
-    return unsubscribe;
-  }, [navigation]);
+    return (
+      <ScrollView contentContainerStyle={{flexGrow: 10, backgroundColor: '#e80000'}}
+        keyboardShouldPersistTaps='handled'
+        bounces='false'
+      >
+        <View style={styles.header}>
+          <Text style={styles.headerTitle}>Resolve</Text>
+        </View>
+        <View style={styles.contentContainer}>
+         <Text style={styles.title}>Welcome to Resolve!</Text>
+       </View>
+         <View style={styles.center}>
+           <TextInput
+             style={styles.input}
+             keyboardType='numeric'
+             maxLength = {10}
+             placeholder="Phone Number"
+             theme={{
+                 colors: {
+                            placeholder: 'gray', text: 'black', primary: 'black',
+                            underlineColor: 'red', background: '#003489'
+                    }
+              }}
+             autoCapitalize="none"
+             onChangeText={this.handlePhone}
+          />
+          <TextInput
+             style={styles.input}
+             maxLength = {15}
+             placeholder="Password"
+             theme={{
+                 colors: {
+                            placeholder: 'gray', text: 'black', primary: 'black',
+                            underlineColor: 'red', background: '#003489'
+                    }
+              }}
+             autoCapitalize="none"
+             secureTextEntry={true}
+             onChangeText={this.handlePassword}
+          />
+          <TouchableOpacity
+              style={styles.button}
+              onPress={() => login(this.state.phone, this.state.password, {navigation} )} >
+              <Text style={styles.buttonText}>Login</Text>
+          </TouchableOpacity>
+          <Text style={styles.error}>{this.state.error}</Text>
+          <View style={styles.row}>
+            <Text style={styles.createAccountText}>Don't Have an account yet?</Text>
+            <TouchableOpacity
+                style={styles.createAccountButton}
+                onPress={() => navigation.navigate('CreateAccount')} >
+                <Text style={styles.secondButtonText}>Create Account</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </ScrollView>
+    );
+  }
 
-  return (
-    <Formik
-      innerRef={form}
-      initialValues={formValues}
-      initialErrors={formErrors}
-      validationSchema={validationSchema}
-      enableReinitialize
-    >
-      {({ values, errors, handleChange, isValid, touched, handleBlur }) => (
 
-          <ScrollView style={styles.container}>
-            <View style={styles.titleView}>
-              <Text style={styles.createAccount}>Create Account</Text>
-            </View>
-            <View style={styles.center}>
-              <TextInput
-                mode='flat'
-                maxLength = {35}
-                autoCapitalize="words"
-                theme={{
-                   colors: {
-                              placeholder: 'gray', text: 'black', primary: 'black',
-                              underlineColor: 'transparent', background: 'white'
-                      }
-                }}
-                label="Display Name"
-                value={values.name}
-                onChangeText={handleChange("name")}
-                style={styles.input}
-              />
-              <TextInput
-                mode='flat'
-                maxLength = {10}
-                onBlur={handleBlur('phone')}
-                keyboardType='numeric'
-                autoCapitalize="words"
-                theme={{
-                   colors: {
-                              placeholder: 'gray', text: 'black', primary: 'black',
-                              underlineColor: 'transparent', background: 'white'
-                      }
-                }}
-                label="Phone Number"
-                value={values.phone}
-                onChangeText={handleChange("phone")}
-                style={styles.input}
-              />
-              <Text style={styles.errors}>{touched.phone && errors.phone}</Text>
-              <TextInput
-                mode='flat'
-                maxLength = {15}
-                onBlur={handleBlur('password')}
-                autoCapitalize="words"
-                theme={{
-                   colors: {
-                              placeholder: 'gray', text: 'black', primary: 'black',
-                              underlineColor: 'transparent', background: 'white'
-                      }
-                }}
-                label="Password"
-                value={values.password}
-                onChangeText={handleChange("password")}
-                style={styles.input}
-              />
-              <Text style={styles.errors}>{touched.password && errors.password}</Text>
-              <TextInput
-                mode='flat'
-                maxLength = {15}
-                onBlur={handleBlur('confirmPassword')}
+  // Check if user is already logged in
+  async getToken() {
 
-                autoCapitalize="words"
-                theme={{
-                   colors: {
-                              placeholder: 'gray', text: 'black', primary: 'black',
-                              underlineColor: 'transparent', background: 'white'
-                      }
-                }}
-                label="Confirm Password"
-                value={values.confirmPassword}
-                onChangeText={handleChange("confirmPassword")}
-                style={styles.input}
-              />
-              <Text style={styles.errors}>{touched.confirmPassword && errors.confirmPassword}</Text>
-              <TouchableOpacity
-                style={styles.button}
-                onPress={() => (createAccount(values, {navigation}))}
-                disabled={!isValid}
-              >
-                <Text>Create Account</Text>
-              </TouchableOpacity>
-            </View>
-          </ScrollView>
-      )}
-    </Formik>
-  );
-};
+    // Import navigation
+    const { navigation } = this.props;
+
+    try {
+      let userData = await AsyncStorage.getItem("userData");
+      let data = JSON.parse(userData);
+
+      // If so, log in automatically
+      if (data !== null) {
+        axios.post('https://t31amiwnaf.execute-api.us-east-1.amazonaws.com/dev/login', (JSON.stringify({"phone": data.phone, "password": data.password })))
+        .then((response) => {
+          // console.log(response)
+          if (response.data.message === "Sucessfully logged in") {
+
+            // Set state of User ID
+            this.setState({
+              userID: response.data.uid
+            })
+
+            // Function to Store User ID
+            const storeUserID = async () => {
+              try {
+                AsyncStorage.setItem("userID", this.state.userID);
+              } catch (error) {
+                console.log("Something went wrong", error);
+              }
+            }
+
+            // Call function to store User ID
+            storeUserID()
+
+            navigation.navigate('HomeTab')
+          }
+        })
+      }
+    } catch (error) {
+      console.log("Something went wrong", error);
+    }
+  }
+
+  // When component mounts, try to automatically log in
+  componentDidMount() {
+   this.getToken();
+  }
+
+}
+
 
 const styles = StyleSheet.create({
   container: {
-    flexGrow: 1,
+    flex: 1,
     backgroundColor: '#e80000',
+    paddingTop: 30,
   },
   contentContainer: {
     alignItems: 'center',
-    paddingTop: 110
+    paddingTop: '5%'
   },
   center: {
     alignItems: 'center'
@@ -211,60 +243,87 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 30,
     padding: '2%',
-    paddingTop: '%',
     color: 'black',
     fontFamily: 'Thonburi-Bold',
   },
   header: {
-      flexDirection: 'row'
-  },
-  titleView: {
-    alignItems: 'center',
-    marginBottom: '5%',
-    marginTop: '7%',
+      flexDirection: 'row',
+      marginTop: 20
   },
   title: {
     fontSize: 35,
     color: 'white',
     fontFamily: 'Thonburi',
+    paddingBottom: '7%'
   },
-  createAccount: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    color: 'white'
+  textBox: {
+    color: 'white',
+    marginBottom: 260
   },
   input: {
     height: 50,
     width: 300,
     marginVertical: 20,
     marginTop: '1%',
-    fontSize: 23,
-    alignSelf: 'center'
+    fontSize: 20,
+    backgroundColor: 'white',
+    elevation: 8,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.32,
+    shadowRadius: 3.46,
   },
   button: {
-    backgroundColor: '#c1e7f5',
-    marginTop: '2%',
-    width: '60%',
-    height: '10%',
+    backgroundColor: 'white',
+    marginTop: '3%',
+    width: '50%',
+    height: '15%',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 10,
+    borderRadius: 200,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 2,
     },
     shadowOpacity: 0.32,
-    shadowRadius: 5.46,
-    elevation: 9,
+    shadowRadius: 3.46,
+    elevation: 6,
   },
-  errors: {
+  buttonText: {
+    fontSize: 21,
     color: 'black',
-    marginTop: '-3%',
-    marginBottom: '2%'
+    fontWeight: '600'
   },
-  errorBottom: {
-    marginTop: '5%'
+  row: {
+    marginTop: '5%',
+    flexDirection: 'row',
+    alignItems: 'center'
+
+  },
+  skip: {
+    marginTop: -10,
+    marginBottom: -20
+  },
+  createAccountText: {
+    marginTop: '3.4%',
+    marginLeft: '14%'
+  },
+  createAccountButton: {
+    backgroundColor: '#e80000',
+    width: '50%',
+    marginLeft: '2%',
+    marginTop: '2%'
+  },
+  secondButtonText: {
+    fontSize: 22
+  },
+  error: {
+    marginBottom: 10,
+    marginTop: '3%',
+    fontSize: 17
   }
 
 });

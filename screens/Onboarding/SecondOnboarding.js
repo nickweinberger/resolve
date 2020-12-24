@@ -1,8 +1,6 @@
 import 'react-native-gesture-handler';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
-import { StyleSheet, Text, View, Button, Image } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
 const SecondOnboarding = ({ navigation }) => {
   return (
@@ -10,16 +8,16 @@ const SecondOnboarding = ({ navigation }) => {
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Resolve</Text>
         <View style={styles.skipButton}>
-          <Button color='black' title='Skip' onPress={() => navigation.navigate('HomeTab')} />
+          <Button color='black' title=' ' onPress={() => navigation.navigate('HomeTab')} />
         </View>
       </View>
       <View style={styles.textBox}>
-        <Text style={styles.text}>Create custom challenges and compete with your friends</Text>
+        <Text style={styles.text}>Create custom challenges and compete with your friends!</Text>
         <View style={styles.nextButton}>
-          <Button color='white' title='Next' onPress={() => navigation.navigate('ThirdOnboarding')} />
+          <Button color='white' title='Complete Onboarding' onPress={() => navigation.navigate('HomeTab')} />
         </View>
         <View>
-          <Text style={styles.progress}>2/3</Text>
+          <Text style={styles.progress}>2/2</Text>
         </View>
       </View>
     </View>

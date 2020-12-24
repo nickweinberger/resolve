@@ -8,12 +8,6 @@ import { ActivityIndicator, TextInput, Divider } from 'react-native-paper';
 
 
 // Import navigation
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-
-import { AntDesign } from '@expo/vector-icons';
-import { FontAwesome } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 
 // Time manipulation import

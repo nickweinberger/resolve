@@ -1,8 +1,6 @@
 import 'react-native-gesture-handler';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
-import { StyleSheet, Text, View, Button, Image } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
 const FirstOnboarding = ({ navigation }) => {
   return (
@@ -19,7 +17,7 @@ const FirstOnboarding = ({ navigation }) => {
           <Button color='white' title='Next' onPress={() => navigation.navigate('SecondOnboarding')} />
         </View>
         <View>
-          <Text style={styles.progress}>1/3</Text>
+          <Text style={styles.progress}>1/2</Text>
         </View>
       </View>
     </View>
@@ -44,7 +42,8 @@ const styles = StyleSheet.create({
     fontFamily: 'Thonburi-Bold',
   },
   header: {
-      flexDirection: 'row'
+      flexDirection: 'row',
+      justifyContent: 'space-between'
   },
   title: {
     fontSize: 35,

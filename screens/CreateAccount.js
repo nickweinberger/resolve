@@ -1,6 +1,4 @@
 import 'react-native-gesture-handler';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import { StyleSheet, Text, ScrollView, View, Image, TouchableOpacity, KeyboardAvoidingView } from 'react-native';
 import { TextInput, Card, Button} from "react-native-paper";
@@ -187,7 +185,7 @@ export default ({ navigation }) => {
                 onPress={() => (createAccount(values, {navigation}))}
                 disabled={!isValid}
               >
-                <Text>Create Account</Text>
+                <Text fontSize="12px">Create Account</Text>
               </TouchableOpacity>
             </View>
           </ScrollView>
@@ -199,7 +197,7 @@ export default ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    backgroundColor: '#e80000',
+    backgroundColor: '#D3D3D3',
   },
   contentContainer: {
     alignItems: 'center',
@@ -211,12 +209,12 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 30,
     padding: '2%',
-    paddingTop: '%',
     color: 'black',
     fontFamily: 'Thonburi-Bold',
   },
   header: {
-      flexDirection: 'row'
+      flexDirection: 'row',
+      paddingTop: 50
   },
   titleView: {
     alignItems: 'center',
@@ -230,8 +228,9 @@ const styles = StyleSheet.create({
   },
   createAccount: {
     fontSize: 30,
+    paddingTop: 20,
     fontWeight: 'bold',
-    color: 'white'
+    color: 'black'
   },
   input: {
     height: 50,
@@ -242,10 +241,11 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
   button: {
-    backgroundColor: '#c1e7f5',
+    backgroundColor: '#e80000',
     marginTop: '2%',
     width: '60%',
-    height: '10%',
+    height: '15%',
+    fontSize: 12,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 10,

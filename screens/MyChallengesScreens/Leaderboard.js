@@ -2,26 +2,14 @@ import 'react-native-gesture-handler';
 
 // React imports
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, Image, TouchableWithoutFeedback,
-         TouchableOpacity, Icon, ScrollView, FlatList } from 'react-native';
-import { ActivityIndicator, TextInput, Divider } from 'react-native-paper';
-import { Container, Header, Content, Card, CardItem, Thumbnail, Left, Body, Right, Row, List } from 'native-base';
+import { StyleSheet, Text, View, TouchableOpacity, FlatList } from 'react-native';
+import { ActivityIndicator, Divider } from 'react-native-paper';
 
-
-
-// Import navigation
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-
+import moment from 'moment'
 import { Ionicons } from '@expo/vector-icons';
 
 // Require Axios
 const axios = require('axios').default;
-
-// Time manipulation import
-import moment from 'moment';
-
 
 export default class Leaderboard extends Component {
 
@@ -55,48 +43,44 @@ export default class Leaderboard extends Component {
       // Formatted end date for moment
       var formattedEndDate = this.state.challenge.endDate.slice(0,10);
 
-      // console.log(challenge.startDateString)
-      // console.log(today)
-
-      console.log(this.state.challenge.timeMetric)
       // function to set state of segment according to time-metric of challenge
 
       // if by Day
-      // if (this.state.challenge.timeMetric === 'Day') {
-      //
-      //   console.log('metric = day')
-      //
-      //   // get Days difference between now and start date
-      //   const daysDiff = (moment(today).diff(formattedStartDate, 'days'))
-      //
-      //   const days = daysDiff + 1
-      //
-      //   // set state of segment
-      //   this.setState({ segment: days })
-      //
-      // }
-      //
-      // // if by Week
-      // if (this.state.challenge.timeMetric === 'Week') {
-      //
-      //   // get Days difference between now and start date
-      //   const days = (moment(today).diff(formattedStartDate, 'days'))
-      //
-      //   // divide days by 7
-      //   const weeksDecimal = days / 7
-      //
-      //   // get first digit
-      //   const weeksFirstDigit = weeksDecimal.toString()[0]
-      //
-      //   // add 1 to first digit (e.g.: if 10 days in, that's the 2nd week of challenge so
-      //   // 10/7 = 1.42 => 1 + 1 = 2... => 2nd week )
-      //   const weeks = parseInt(weeksFirstDigit) + 1
-      //
-      //   console.log('weeks ' + weeks)
-      //
-      //   // set state of segment
-      //   this.setState({ segment: weeks })
-      // }
+      if (this.state.challenge.timeMetric === 'Day') {
+      
+        console.log('metric = day')
+      
+        // get Days difference between now and start date
+        const daysDiff = (moment(today).diff(formattedStartDate, 'days'))
+      
+        const days = daysDiff + 1
+      
+        // set state of segment
+        this.setState({ segment: days })
+      
+      }
+      
+      // if by Week
+      if (this.state.challenge.timeMetric === 'Week') {
+      
+        // get Days difference between now and start date
+        const days = (moment(today).diff(formattedStartDate, 'days'))
+      
+        // divide days by 7
+        const weeksDecimal = days / 7
+      
+        // get first digit
+        const weeksFirstDigit = weeksDecimal.toString()[0]
+      
+        // add 1 to first digit (e.g.: if 10 days in, that's the 2nd week of challenge so
+        // 10/7 = 1.42 => 1 + 1 = 2... => 2nd week )
+        const weeks = parseInt(weeksFirstDigit) + 1
+      
+        console.log('weeks ' + weeks)
+      
+        // set state of segment
+        this.setState({ segment: weeks })
+      }
 
       this.setState({ segment: 2 })
 
@@ -445,23 +429,20 @@ const styles = StyleSheet.create({
    paddingTop: 20,
   },
   row: {
-    flexDirection: 'row',
     marginTop: '10%',
-    marginBottom: 0
+    width: '80%',
+    flexDirection: 'row'
   },
   rowName: {
-    width: '55%',
-    paddingRight: 30,
-    alignItems: 'center'
+    width: '45%',
   },
   rowFS: {
-    width: 30,
-    paddingRight: 0,
+    width: '20%',
     alignItems: 'center',
   },
   rowCP: {
-    width: 60,
-    marginLeft: 10,
+    width: 80,
+    paddingLeft: 20,
     alignItems: 'center'
   },
   rowNameText: {
@@ -469,15 +450,17 @@ const styles = StyleSheet.create({
     marginTop: '3%'
   },
   rowFSText: {
+    width: '20%',
     fontSize: 30
+
   },
   rowCPText: {
     fontSize: 20,
+    width: 80,
     marginTop: '10%',
-    marginLeft: 10
   },
   name: {
-    width: '60%',
+    width: '45%',
     alignItems: 'center'
   },
   nameText: {

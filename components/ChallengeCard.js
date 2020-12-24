@@ -1,13 +1,8 @@
 import 'react-native-gesture-handler';
 
 import React from 'react';
-import { StyleSheet, View, Text, Image, ListItem, Button, TouchableOpacity } from 'react-native'
-import { Container, Header, Content, Card, CardItem, Thumbnail, Icon, Left, Body, Right, Row, List } from 'native-base';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
-import { Ionicons } from '@expo/vector-icons';
+import { StyleSheet, Text, Image, TouchableOpacity } from 'react-native'
+import { Container, Content, Card, CardItem, Body, Row, List } from 'native-base';
 
 
 const ChallengeCard = ({ navigation }) => {

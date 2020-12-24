@@ -80,15 +80,6 @@ export default ({ navigation }) => {
     // console.log(currentDate)
   };
 
-  const showMode = (currentMode) => {
-    setShow(true);
-    setMode(currentMode);
-  };
-
-  const showDatepicker = () => {
-    showMode('date');
-  };
-
   return (
     <Formik
       innerRef={form}
@@ -96,7 +87,7 @@ export default ({ navigation }) => {
       initialErrors={formErrors}
       enableReinitialize
     >
-      {({ values, errors, handleChange, resetForm }) => (
+      {({ values, errors }) => (
         <View style={styles.container}>
           <View style={styles.topRow}>
             <TouchableOpacity style={styles.icon} onPress={() => navigation.goBack()}>
@@ -105,7 +96,7 @@ export default ({ navigation }) => {
             </TouchableOpacity>
             <Text style={styles.title}>Select a Start Date</Text>
           </View>
-          <Text style={{ marginBottom: 10}}>We suggest leaving a few days to let everyone sign up!</Text>
+          <Text style={{ marginBottom: 10, marginTop: 10}}>We suggest leaving a few days to let everyone sign up!</Text>
           {Platform.OS === 'ios' && (
               <DateTimePicker
                 minimumDate={new Date(2020, 7, 4)}
@@ -180,8 +171,6 @@ export default ({ navigation }) => {
 
               // Call above function
               insertUserID()
-
-
 
               navigation.navigate("MyChallengesSwiper")
 

@@ -5,14 +5,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-// Icon imports
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { Entypo } from '@expo/vector-icons';
-import { Feather } from '@expo/vector-icons';
-
 // Import screens
-import MyChallengesSwiper from './MyChallengesSwiper'
+import MyChallengesSwiper from '../components/MyChallengesSwiper'
 import PendingChallenges from '../screens/MyChallengesScreens/PendingChallenges'
 import Leaderboard from '../screens/MyChallengesScreens/Leaderboard'
 import AddFriendsInChallenge from '../screens/MyChallengesScreens/AddFriendsInChallenge'

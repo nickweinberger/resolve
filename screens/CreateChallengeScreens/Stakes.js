@@ -85,9 +85,6 @@ export default ({ navigation }) => {
             >
             Review
             </Button>
-            <Card style={{ width: 200, height: 200, marginTop: 50 }}>
-              <Text>{JSON.stringify(values, null, 2)}</Text>
-            </Card>
           </ScrollView>
         </KeyboardAvoidingView>
       )}
