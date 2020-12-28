@@ -49,20 +49,6 @@ const axios = require('axios').default;
     return unsubscribe;
   }, [navigation]);
 
-
-  // Range render function
-  const renderPenalty = (values) => {
-    console.log(values)
-    if (values.customPenalty) {
-      console.log(values.customPenalty)
-      return (
-          <CardItem style={styles.item}>
-            <Text>Custom Penalty: <Text style={styles.itemValue}>{values.customPenalty}</Text></Text>
-          </CardItem>
-      )
-    }
-  }
-
   // Create Challenge Function
 async function createChallenge(values) {
 

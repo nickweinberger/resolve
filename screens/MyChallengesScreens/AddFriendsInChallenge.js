@@ -31,9 +31,7 @@ export default class AddFriendsInChallenge extends Component {
       this.setState({ phone: text });
     };
 
-    async checkContact(phone, challenge) {
-
-        // console.log(phone)
+    async checkContact(phone, challenge, {navigation} ) {
 
         // Put phone number into array for Post request
         let phoneArray = [phone]
@@ -73,8 +71,6 @@ export default class AddFriendsInChallenge extends Component {
                this.setState({ error: 'null' })
                this.setState({ user: userObject.uid })
 
-               // console.log(userObject)
-
                // set url
                let url = 'https://t31amiwnaf.execute-api.us-east-1.amazonaws.com/dev/add-user-to-challenge'
 
@@ -83,10 +79,8 @@ export default class AddFriendsInChallenge extends Component {
                .then((response) => {
 
                  console.log(response);
-
+                 navigation.navigate("MyChallengesSwiper")
                  alert(`You have successfully added your friend to ${challenge.challengeName}`)
-
-
 
                }, (error) => {
                  console.log("This is the error: " + error);
@@ -167,7 +161,7 @@ export default class AddFriendsInChallenge extends Component {
                 onChangeText={this.handlePhone}
                 style={styles.input}
             />
-            <TouchableOpacity style={styles.leaderboardButton} onPress={() => this.checkContact(this.state.phone, thisChallenge)}>
+            <TouchableOpacity style={styles.leaderboardButton} onPress={() => this.checkContact(this.state.phone, thisChallenge, {navigation} )}>
                 <Text style={styles.buttonText}>Add Friend</Text>
             </TouchableOpacity>
             {renderError()}

@@ -48,7 +48,7 @@ export default class Leaderboard extends Component {
       // if by Day
       if (this.state.challenge.timeMetric === 'Day') {
       
-        console.log('metric = day')
+        // console.log('metric = day')
       
         // get Days difference between now and start date
         const daysDiff = (moment(today).diff(formattedStartDate, 'days'))
@@ -56,7 +56,10 @@ export default class Leaderboard extends Component {
         const days = daysDiff + 1
       
         // set state of segment
-        this.setState({ segment: days })
+        // console.log(days)
+
+        // change this back to just `segment: days`
+        this.setState({ segment: days + 1})
       
       }
       
@@ -76,13 +79,11 @@ export default class Leaderboard extends Component {
         // 10/7 = 1.42 => 1 + 1 = 2... => 2nd week )
         const weeks = parseInt(weeksFirstDigit) + 1
       
-        console.log('weeks ' + weeks)
+        // console.log('weeks ' + weeks)
       
         // set state of segment
         this.setState({ segment: weeks })
       }
-
-      this.setState({ segment: 2 })
 
     }
 
@@ -98,7 +99,6 @@ export default class Leaderboard extends Component {
       // Get request
       axios.get(url)
       .then((response) => {
-        // console.log(response)
 
         // if data returned
         if (response.data.leaderboard.length > 0) {
@@ -109,9 +109,6 @@ export default class Leaderboard extends Component {
           // if there is data
           if (data) {
 
-            console.log(data)
-            console.log(this.state.segment)
-
             // empty array for financial sums of all objects
             let financialSumsArray = []
             // empty array for progress in current segment of all objects
@@ -121,11 +118,8 @@ export default class Leaderboard extends Component {
             // empty array for display name of all objects
             let displayNameArray = []
 
-            console.log('goal: ' + this.state.challenge.goal)
-
             //For each object in array
             for (let i = 0; i < data.length; i++) {
-
 
               // Get object keys
               let keys = Object.keys(data[i])
@@ -139,6 +133,7 @@ export default class Leaderboard extends Component {
               // check if one of the segments in each object is equal to current segment
               const match = segments.find(element => element === `Segment-${this.state.segment}-Progress`)
 
+              console.log('current', parseInt((data[i][`${match}`])))
               // if there's a match
               if (match !== undefined) {
 
@@ -148,9 +143,9 @@ export default class Leaderboard extends Component {
               // if no match exists, push null to currentSegmentProgress
               } else {
 
+                console.log('match', match)
                 // push null to currentSegmentProgress
                 currentSegmentArray.push(null)
-
               }
 
               // create array of uids
@@ -162,31 +157,25 @@ export default class Leaderboard extends Component {
               // For each segment
               for (let j = 0; j < segments.length; j++) {
 
-                console.log("progress: " + data[i][segments[j]])
+                  // if segment value is more than goal
+                  // console.log('data: ', data)
+                  console.log('datapoint: ', data[i][segments[j]])
+                  if ((parseInt(data[i][segments[j]])) >= this.state.challenge.goal) {
 
-
-                // if segment value is less than goal
-                if ((parseInt(data[i][segments[j]])) < this.state.challenge.goal) {
-
-                    // add financial penalty to financial sum
-                    financialSum = financialSum + (parseInt(this.state.challenge.financialPenalty))
-
-                }
+                    null
+                  } else 
+                  // add financial penalty to financial sum
+                  financialSum = financialSum + (parseInt(this.state.challenge.financialPenalty))
 
               }
-
               // push each financial sum to an array of all financial sums
               financialSumsArray.push(financialSum)
 
-              console.log(financialSum)
-
             }
+            // console.log('fs array: ', financialSumsArray)
 
             // create array of the arrays I just created
             let leaderboardArray = [ uidArray, financialSumsArray, currentSegmentArray, displayNameArray]
-
-
-            // console.log(leaderboardArray)
 
             // create empty array of arrays
             let arrayOfArrays = []
@@ -209,8 +198,6 @@ export default class Leaderboard extends Component {
               arrayOfArrays.push(array)
 
             }
-
-
             // Below: turn arrayOfArrays into arrayOfObjects
 
             // if arrayOfArrays exists
@@ -253,8 +240,6 @@ export default class Leaderboard extends Component {
   }
 
   render() {
-
-    console.log(this.state.userArray)
     // console.log(this.state.userArray[0])
 
     // Sort array of users by financial sum for rendering
@@ -267,8 +252,6 @@ export default class Leaderboard extends Component {
       }
       return 0;
     }
-
-    console.log(this.state.userArray.sort(compare))
 
 
     // Import navigation
@@ -338,6 +321,8 @@ export default class Leaderboard extends Component {
           )
         }
       }
+
+      // console.log(this.state.segment)
 
       return (
         <View style={styles.container}>
@@ -434,7 +419,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   rowName: {
-    width: '45%',
+    width: '50%',
   },
   rowFS: {
     width: '20%',
@@ -451,17 +436,16 @@ const styles = StyleSheet.create({
   },
   rowFSText: {
     width: '20%',
-    fontSize: 30
-
+    fontSize: 25,
+    marginTop: 6
   },
   rowCPText: {
-    fontSize: 20,
+    fontSize: 25,
     width: 80,
     marginTop: '10%',
   },
   name: {
-    width: '45%',
-    alignItems: 'center'
+    width: '50%',
   },
   nameText: {
     fontSize: 20

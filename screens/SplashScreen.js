@@ -67,7 +67,6 @@ export default class PersistentLogin extends Component {
         // Axios Request
         axios.post('https://t31amiwnaf.execute-api.us-east-1.amazonaws.com/dev/login', (JSON.stringify({"phone": this.state.phone, "password": this.state.password })))
         .then((response) => {
-          console.log(response)
           if (response.data.message === "Sucessfully logged in") {
 
             // Call storeToken
