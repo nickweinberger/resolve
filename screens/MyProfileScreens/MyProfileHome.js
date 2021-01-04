@@ -40,15 +40,11 @@ export default class MyProfileHome extends Component {
     const renderDisplayName = async () => {
 
       let data = await AsyncStorage.getItem('userID')
-      // let myPhone = 'hahahah'
-      // let myPhone = phone.phone
-      // console.log(myPhone)
 
       return (
         <Text style={styles.headerText}>{data}</Text>
       )
     }
-
 
     return (
       <View style={styles.container}>
