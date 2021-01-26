@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { View, StyleSheet, Text, Picker, DatePicker, ScrollView, TouchableOpacity, KeyboardAvoidingView, Modal } from "react-native";
+import { View, StyleSheet, Text, Picker, DatePicker, ScrollView, TouchableOpacity, KeyboardAvoidingView, Alert } from "react-native";
 import { TextInput, Button, Divider } from "react-native-paper";
 import { Container, Header, Content, Card, CardItem, Thumbnail, Icon, Left, Body, Right, Row, List } from 'native-base';
 
@@ -106,6 +106,7 @@ async function createChallenge(values) {
           <Text style={styles.title}>Select a Start Date:</Text>
           {Platform.OS === 'ios' && (
               <DateTimePicker
+                type={date}
                 minimumDate={new Date(2020, 7, 4)}
                 maximumDate={new Date(2022, 11, 31)}
                 style={styles.showDatePicker}
@@ -162,6 +163,7 @@ async function createChallenge(values) {
 
                   // Call create challenge with new object
                   createChallenge(newValue)
+
                 } catch (error) {
                   console.log("Something went wrong", error);
                 }
@@ -199,10 +201,11 @@ const styles = StyleSheet.create({
   button: {
     marginTop: '12%', 
     backgroundColor: '#e80000',
-    width: '60%',
+    width: '65%',
     justifyContent: 'center',
     fontSize: 16,
-    height: 40
+    borderRadius: 5,
+    height: 55
   },
   leftInput: {
     height: 50,

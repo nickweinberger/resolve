@@ -183,6 +183,7 @@ export default class PersistentLogin extends Component {
 
     try {
       let userData = await AsyncStorage.getItem("userData");
+      
       let data = JSON.parse(userData);
 
       // If so, log in automatically

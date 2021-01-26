@@ -41,7 +41,6 @@ export default ({ navigation }) => {
           <TextInput
             mode='outlined'
             maxLength = {35}
-            autoCapitalize="words"
             theme={{
                colors: {
                           placeholder: 'gray', text: 'black', primary: 'black',

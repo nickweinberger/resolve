@@ -126,7 +126,7 @@ export default class Leaderboard extends Component {
               let segmentsCompleted = 0
 
               // check if one of the segments in each object is equal to current segment
-              const match = segments.find(element => element === `Segment-${this.state.segment - 1}-Progress`)
+              const match = segments.find(element => element === `Segment-${this.state.segment}-Progress`)
 
               // if there's a match
               if (match !== undefined) {

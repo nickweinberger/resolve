@@ -12,7 +12,6 @@ import { Entypo } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 
 import Stakes from '../screens/CreateChallengeScreens/Stakes'
-import DateAndSubmit from '../screens/CreateChallengeScreens/DateAndSubmit'
 import Messaging from '../screens/CreateChallengeScreens/Messaging'
 import Review from '../screens/CreateChallengeScreens/Review'
 import PendingPage from '../screens/CreateChallengeScreens/PendingPage'
@@ -27,7 +26,6 @@ const EndOfChallengeStack = () => {
         headerShown: false
       }}>
         <Stack.Screen name="Review" component={Review}/>
-        <Stack.Screen name="DateAndSubmit" component={DateAndSubmit}/>
         <Stack.Screen name="Messaging" component={Messaging}/>
         <Stack.Screen name="PendingPage" component={PendingPage}/>
       </Stack.Navigator>
